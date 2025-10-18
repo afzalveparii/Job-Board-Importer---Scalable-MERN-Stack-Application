@@ -168,77 +168,77 @@ npm install
 
 ## 📁 Project Structure
 
-`
-job-board-importer/
-│
-├── server/ # Backend Application
-│ ├── src/
-│ │ ├── config/ # Configuration files
-│ │ │ ├── database.js # MongoDB connection
-│ │ │ ├── redis.js # Redis connection
-│ │ │ ├── queue.js # Bull queue setup
-│ │ │ └── socket.js # Socket.IO setup
+job-board-importer/<br/>
+# Backend Structure <br/>
+├── server/ <br/>
+│ ├── src/ <br/>
+│ │ ├── config/ # Configuration files <br/>
+│ │ │ ├── database.js # MongoDB connection <br/>
+│ │ │ ├── redis.js # Redis connection <br/>
+│ │ │ ├── queue.js # Bull queue setup <br/>
+│ │ │ └── socket.js # Socket.IO setup <br/>
 │ │ │
-│ │ ├── models/ # Mongoose schemas
-│ │ │ ├── Job.js # Job model
-│ │ │ └── ImportLog.js # Import log model
+│ │ ├── models/ # Mongoose schemas <br/>
+│ │ │ ├── Job.js # Job model <br/>
+│ │ │ └── ImportLog.js # Import log model <br/>
 │ │ │
-│ │ ├── controllers/ # Route controllers
-│ │ │ ├── importController.js
-│ │ │ └── jobController.js
+│ │ ├── controllers/ # Route controllers <br/>
+│ │ │ ├── importController.js <br/>
+│ │ │ └── jobController.js <br/>
 │ │ │
-│ │ ├── routes/ # Express routes
-│ │ │ ├── importRoutes.js
-│ │ │ └── jobRoutes.js
+│ │ ├── routes/ # Express routes <br/>
+│ │ │ ├── importRoutes.js <br/>
+│ │ │ └── jobRoutes.js <br/>
 │ │ │
-│ │ ├── workers/ # Queue workers
-│ │ │ └── jobImportWorker.js
+│ │ ├── workers/ # Queue workers <br/>
+│ │ │ └── jobImportWorker.js <br/>
 │ │ │
-│ │ ├── utils/ # Utility functions
-│ │ │ ├── xmlParser.js # XML to JSON parser
-│ │ │ └── logger.js # Logging utility
+│ │ ├── utils/ # Utility functions <br/>
+│ │ │ ├── xmlParser.js # XML to JSON parser <br/>
+│ │ │ └── logger.js # Logging utility <br/>
 │ │ │
-│ │ ├── cron/ # Scheduled tasks
-│ │ │ └── scheduledImport.js
+│ │ ├── cron/ # Scheduled tasks <br/>
+│ │ │ └── scheduledImport.js <br/>
 │ │ │
-│ │ ├── app.js # Express app
-│ │ └── server.js # Server entry
+│ │ ├── app.js # Express app <br/>
+│ │ └── server.js # Server entry <br/>
 │ │
-│ ├── .env # Environment variables
-│ └── package.json
-│
-├── client/ # Frontend Application
-│ ├── src/
-│ │ ├── app/ # Next.js App Router
-│ │ │ ├── page.js # Home page
-│ │ │ ├── imports/ # Import pages
-│ │ │ │ ├── page.js # Import history
-│ │ │ │ └── trigger/
-│ │ │ │ └── page.js # Trigger import
-│ │ │ └── jobs/
-│ │ │ └── page.js # Jobs listing
+│ ├── .env # Environment variables <br/>
+│ └── package.json <br/>
+│<br/>
+# Frontend Structure <br/>
+├── client/ <br/>
+│ ├── src/ <br/>
+│ │ ├── app/ # Next.js App Router  <br/>
+│ │ │ ├── page.js # Home page <br/>
+│ │ │ ├── imports/ # Import pages <br/>
+│ │ │ │ ├── page.js # Import history <br/>
+│ │ │ │ └── trigger/ <br/>
+│ │ │ │ └── page.js # Trigger import  <br/>
+│ │ │ └── jobs/ <br/>
+│ │ │ └── page.js # Jobs listing  <br/>
 │ │ │
-│ │ ├── components/ # React components
-│ │ │ ├── Navbar.js
-│ │ │ ├── ImportTable.js
-│ │ │ ├── JobCard.js
-│ │ │ └── Pagination.js
+│ │ ├── components/ # React components <br/>
+│ │ │ ├── Navbar.js <br/>
+│ │ │ ├── ImportTable.js <br/>
+│ │ │ ├── JobCard.js <br/>
+│ │ │ └── Pagination.js <br/>
 │ │ │
-│ │ ├── services/ # API services
-│ │ │ └── api.js
+│ │ ├── services/ # API services <br/>
+│ │ │ └── api.js <br/>
 │ │ │
-│ │ └── hooks/ # Custom hooks
-│ │ └── useSocket.js
+│ │ └── hooks/ # Custom hooks  <br/>
+│ │ └── useSocket.js <br/>
 │ │
-│ ├── .env.local
-│ └── package.json
+│ ├── .env <br/>
+│ └── package.json <br/>
 │
-├── docs/ # Documentation
-│ ├── architecture.md
-│ └── api-documentation.md
+├── docs/ # Documentation <br/>
+│ ├── architecture.md <br/>
+│ └── api-documentation.md <br/>
 │
-└── README.md # This file
-`
+└── README.md # This file <br/>
+
 **Solution:**
 - Verify API URL is accessible
 - Check category name is valid (use `dev` not `it-tech`)
