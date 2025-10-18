@@ -144,6 +144,21 @@ npm install <br/>
 cd ../client <br/>
 npm install <br/>
 
+### env.local FOR Frontend
+- NEXT_PUBLIC_API_URL=http://localhost:8889
+
+### env for Backend
+- NODE_ENV=development
+- PORT=your_port_number
+- MONGO_URI=your_mongodb-uri
+- REDIS_HOST=your_redis_host
+- REDIS_PORT=your_redis_port
+- WORKER_CONCURRENCY=enter_number_of_concurrency_eg.10
+- BATCH_SIZE=enter_number_of_batchSize_eg.50
+- FRONTEND_URL=enter_your_frontend_url
+- JOB_SOURCES=https://jobicy.com/?feed=job_feed,https://jobicy.com/?feed=job_feed&job_categories=dev,https://jobicy.com/?feed=job_feed&job_categories=data-science,https://jobicy.com/?feed=job_feed&job_categories=design-multimedia,https://jobicy.com/?feed=job_feed&job_categories=marketing
+
+
 
 **Expected packages:**
 - next, react, react-dom
@@ -162,7 +177,7 @@ npm install <br/>
 - **Import History**: http://localhost:3000/imports
 - **Trigger Import**: http://localhost:3000/imports/trigger
 - **Jobs Listing**: http://localhost:3000/jobs
-- **Backend API**: http://localhost:5000/health
+- **Backend API**: http://localhost:8889/health
 
 ---
 
