@@ -1,0 +1,319 @@
+# 🚀 Job Board Importer - Scalable MERN Stack Application
+
+<div align="center">
+
+![Node.js](https://img.shields.io/badge/Node.js-18+-green)
+![Next.js](https://img.shields.io/badge/Next.js-15-black)
+![MongoDB](https://img.shields.io/badge/MongoDB-6.0+-green)
+![Redis](https://img.shields.io/badge/Redis-3.0+-red)
+![License](https://img.shields.io/badge/license-MIT-blue)
+
+A production-ready job import system with **queue-based processing**, **real-time updates**, and comprehensive **import history tracking**.
+
+[Features](#-features) • [Quick Start](#-quick-start) • [Architecture](#-architecture) • [API Docs](#-api-documentation)
+
+</div>
+
+---
+
+## 📋 Table of Contents
+
+- [Overview](#-overview)
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Prerequisites](#-prerequisites)
+- [Installation](#-installation)
+- [Configuration](#-configuration)
+- [Running the Application](#-running-the-application)
+- [Project Structure](#-project-structure)
+- [API Documentation](#-api-documentation)
+- [Testing](#-testing)
+- [Deployment](#-deployment)
+- [Troubleshooting](#-troubleshooting)
+- [Contributing](#-contributing)
+
+---
+
+## 🎯 Overview
+
+This is a **full-stack job board application** that automatically imports job listings from external RSS/XML feeds, processes them through a **Redis-based queue system**, and provides a beautiful admin interface to track imports and browse jobs.
+
+### Key Highlights
+
+✅ **Queue-Based Processing**: Background workers handle imports using Bull + Redis  
+✅ **Real-time Updates**: Socket.IO provides live progress tracking  
+✅ **Scalable Architecture**: Horizontal scaling support with multiple workers  
+✅ **Import History**: Comprehensive logging with success/failure tracking  
+✅ **Scheduled Imports**: Automated hourly job fetching via cron  
+✅ **Modern UI**: Next.js 15 with Tailwind CSS  
+✅ **Error Handling**: Retry logic with exponential backoff  
+
+---
+
+## ✨ Features
+
+### Backend Features
+- 🔄 **Queue Management**: Bull (Redis-backed) for reliable job processing
+- 📊 **Batch Processing**: Configurable batch sizes for memory efficiency
+- 🔁 **Retry Logic**: Automatic retries with exponential backoff
+- 📝 **Detailed Logging**: Track every import with timestamps and statistics
+- 🕐 **Cron Scheduling**: Hourly automated imports from multiple sources
+- 🔌 **Real-time Updates**: Socket.IO for live import progress
+- 📈 **Statistics**: Track total/new/updated/failed jobs per import
+- 🛡️ **Error Tracking**: Capture and store failure reasons
+
+### Frontend Features
+- 🎨 **Modern UI**: Clean, responsive design with Tailwind CSS
+- 📱 **Mobile Responsive**: Works seamlessly on all devices
+- 🔍 **Job Search**: Filter by category, type, company, and keywords
+- 📊 **Import Dashboard**: Visual statistics and progress tracking
+- 🔴 **Live Updates**: Real-time import progress via WebSockets
+- 📑 **Pagination**: Efficient data loading for large datasets
+- 🚀 **Trigger Imports**: Manual import triggering with preset URLs
+
+---
+
+## 🛠️ Tech Stack
+
+### Backend
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| Node.js | 18+ | Runtime environment |
+| Express.js | 4.x | Web framework |
+| MongoDB | 6.0+ | Database |
+| Mongoose | 8.x | ODM for MongoDB |
+| Bull | 4.x | Redis-based queue |
+| Redis | 3.0+ | Queue storage |
+| Socket.IO | 4.x | Real-time updates |
+| Axios | 1.6+ | HTTP requests |
+| xml2js | 0.6+ | XML parsing |
+| node-cron | 3.x | Job scheduling |
+
+### Frontend
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| Next.js | 15.x | React framework |
+| React | 18.x | UI library |
+| Tailwind CSS | 3.x | Styling |
+| Socket.IO Client | 4.x | Real-time client |
+| Axios | 1.7+ | API requests |
+| React Icons | 5.x | Icon library |
+| date-fns | 4.x | Date formatting |
+
+---
+
+## 📦 Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+### Required Software
+- ✅ **Node.js** v18 or higher ([Download](https://nodejs.org/))
+- ✅ **MongoDB** v6.0 or higher ([Download](https://www.mongodb.com/try/download/community))
+- ✅ **Redis** v3.0 or higher ([Windows Guide](https://redis.io/docs/getting-started/installation/install-redis-on-windows/))
+- ✅ **Git** ([Download](https://git-scm.com/downloads))
+
+### Optional (Recommended)
+- 🐳 **Docker Desktop** - For containerized Redis ([Download](https://www.docker.com/products/docker-desktop/))
+- 📝 **VS Code** - Recommended IDE ([Download](https://code.visualstudio.com/))
+
+### Verify Installations
+node --version # Should be v18+
+npm --version # Should be 9+
+mongod --version # Should be v6.0+
+redis-cli --version # Should be v3.0+
+
+## 🚀 Installation
+
+### Step 1: Clone the Repository
+
+git clone https://github.com/your-username/job-board-importer.git
+cd job-board-importer
+
+
+### Step 2: Install Backend Dependencies
+
+cd server
+npm install
+
+**Expected packages:**
+- express, mongoose, bull, ioredis
+- axios, xml2js, socket.io
+- dotenv, node-cron, cors
+
+### Step 3: Install Frontend Dependencies
+cd ../client
+npm install
+
+
+**Expected packages:**
+- next, react, react-dom
+- tailwindcss, postcss, autoprefixer
+- socket.io-client, axios, react-icons
+
+### Step 4: Setup MongoDB
+
+**Option A: Local Installation**
+- Start MongoDB service
+- Install Redis
+
+### Access the Application
+
+- **Frontend**: http://localhost:3000
+- **Import History**: http://localhost:3000/imports
+- **Trigger Import**: http://localhost:3000/imports/trigger
+- **Jobs Listing**: http://localhost:3000/jobs
+- **Backend API**: http://localhost:5000/health
+
+---
+
+## 📁 Project Structure
+
+`
+job-board-importer/
+│
+├── server/ # Backend Application
+│ ├── src/
+│ │ ├── config/ # Configuration files
+│ │ │ ├── database.js # MongoDB connection
+│ │ │ ├── redis.js # Redis connection
+│ │ │ ├── queue.js # Bull queue setup
+│ │ │ └── socket.js # Socket.IO setup
+│ │ │
+│ │ ├── models/ # Mongoose schemas
+│ │ │ ├── Job.js # Job model
+│ │ │ └── ImportLog.js # Import log model
+│ │ │
+│ │ ├── controllers/ # Route controllers
+│ │ │ ├── importController.js
+│ │ │ └── jobController.js
+│ │ │
+│ │ ├── routes/ # Express routes
+│ │ │ ├── importRoutes.js
+│ │ │ └── jobRoutes.js
+│ │ │
+│ │ ├── workers/ # Queue workers
+│ │ │ └── jobImportWorker.js
+│ │ │
+│ │ ├── utils/ # Utility functions
+│ │ │ ├── xmlParser.js # XML to JSON parser
+│ │ │ └── logger.js # Logging utility
+│ │ │
+│ │ ├── cron/ # Scheduled tasks
+│ │ │ └── scheduledImport.js
+│ │ │
+│ │ ├── app.js # Express app
+│ │ └── server.js # Server entry
+│ │
+│ ├── .env # Environment variables
+│ └── package.json
+│
+├── client/ # Frontend Application
+│ ├── src/
+│ │ ├── app/ # Next.js App Router
+│ │ │ ├── page.js # Home page
+│ │ │ ├── imports/ # Import pages
+│ │ │ │ ├── page.js # Import history
+│ │ │ │ └── trigger/
+│ │ │ │ └── page.js # Trigger import
+│ │ │ └── jobs/
+│ │ │ └── page.js # Jobs listing
+│ │ │
+│ │ ├── components/ # React components
+│ │ │ ├── Navbar.js
+│ │ │ ├── ImportTable.js
+│ │ │ ├── JobCard.js
+│ │ │ └── Pagination.js
+│ │ │
+│ │ ├── services/ # API services
+│ │ │ └── api.js
+│ │ │
+│ │ └── hooks/ # Custom hooks
+│ │ └── useSocket.js
+│ │
+│ ├── .env.local
+│ └── package.json
+│
+├── docs/ # Documentation
+│ ├── architecture.md
+│ └── api-documentation.md
+│
+└── README.md # This file
+`
+**Solution:**
+- Verify API URL is accessible
+- Check category name is valid (use `dev` not `it-tech`)
+- Test with: `curl https://jobicy.com/?feed=job_feed`
+
+---
+
+## 📚 Documentation
+
+- **[API Documentation](docs/api-documentation.md)** - Complete API reference
+- **[Architecture Guide](docs/architecture.md)** - System design and decisions
+- **[Setup Video](https://youtube.com/demo)** - Video walkthrough (if available)
+
+---
+
+## 🎯 Key Features Demo
+
+### 1. Import History Tracking
+- View all import operations in paginated table
+- Real-time status updates (Processing → Completed)
+- Detailed statistics (Total/New/Updated/Failed)
+- Filter by status and search
+
+### 2. Trigger Manual Import
+- Select preset URLs or enter custom
+- Immediate queue confirmation
+- Live progress tracking
+
+### 3. Real-time Progress
+- Socket.IO powered updates
+- Progress bar animation
+- No page refresh needed
+
+### 4. Jobs Listing
+- Browse all imported jobs
+- Search by keywords
+- Filter by category and type
+- Paginated results
+
+---
+
+
+---
+
+## 👥 Author
+
+**Afzal Vepari**
+- GitHub: [@afzalveparii](https://github.com/afzalveparii)
+- Email: afzal.vepariii@gmail.com
+- LinkedIn: [afzalveparii](https://linkedin.com/in/afzalveparii)
+
+---
+
+## 📝 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 🙏 Acknowledgments
+
+- **Bull** - For reliable queue processing
+- **Next.js** - For amazing React framework
+- **MongoDB** - For flexible database
+- **Socket.IO** - For real-time capabilities
+- **Jobicy API** - For providing job data
+
+---
+
+## 📞 Support
+
+For issues or questions:
+- Create an issue on GitHub
+
+---
+
+**Built with ❤️ for Artha Job Board Assignment**
+
