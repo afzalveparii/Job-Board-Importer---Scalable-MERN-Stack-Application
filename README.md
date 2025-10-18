@@ -220,7 +220,7 @@ job-board-importer/<br/>
 │ │
 │ ├── .env # Environment variables <br/>
 │ └── package.json <br/>
-│<br/>
+<br/>
 # Frontend Structure <br/>
 ├── client/ <br/>
 │ ├── src/ <br/>
@@ -245,7 +245,7 @@ job-board-importer/<br/>
 │ │ └── hooks/ # Custom hooks  <br/>
 │ │ └── useSocket.js <br/>
 │ │
-│ ├── .env <br/>
+│ ├── .env.local <br/>
 │ └── package.json <br/>
 │
 ├── docs/ # Documentation <br/>
