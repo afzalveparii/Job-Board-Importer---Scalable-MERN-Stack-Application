@@ -132,8 +132,8 @@ cd job-board-importer
 
 ### Step 2: Install Backend Dependencies
 
-cd server
-npm install
+cd server <br/>
+npm install <br/>
 
 **Expected packages:**
 - express, mongoose, bull, ioredis
@@ -141,8 +141,8 @@ npm install
 - dotenv, node-cron, cors
 
 ### Step 3: Install Frontend Dependencies
-cd ../client
-npm install
+cd ../client <br/>
+npm install <br/>
 
 
 **Expected packages:**
