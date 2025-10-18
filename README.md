@@ -248,9 +248,8 @@ job-board-importer/<br/>
 
 ## 📚 Documentation
 
-- **[API Documentation](docs/api-documentation.md)** - Complete API reference
-- **[Architecture Guide](docs/architecture.md)** - System design and decisions
-- **[Setup Video](https://youtube.com/demo)** - Video walkthrough (if available)
+- **[API Documentation](docs/📚 API Documentation - Job Board Importer.pdf)** - Complete API reference
+- **[Architecture Guide](docs/📚 API Documentation - Job Board Importer.pdf)** - System design and decisions
 
 ---
 
